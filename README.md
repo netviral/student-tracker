@@ -14,6 +14,7 @@ This project is a basic web application designed to help students track and mana
 - Designed with responsiveness and usability in mind
 
 ## Folder Structure
+```
 ├── app.js # Main Express server
 ├── package.json # Node.js dependencies and scripts
 ├── package-lock.json
@@ -33,7 +34,7 @@ This project is a basic web application designed to help students track and mana
 │ ├── partials/ # Shared layout components
 │ ├── rough_template/ # Optional drafts or layout ideas
 │ └── index.ejs # Homepage showing assignment list
-
+```
 
 ## Getting Started
 
