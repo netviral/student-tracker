@@ -196,6 +196,17 @@
   }
 }
 
+.highlight {
+  background-color: yellow; /* You can change this to any color you prefer */
+  font-weight: bold;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+.assignment-row:hover{
+background-color: #f3f3f6;
+}
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);

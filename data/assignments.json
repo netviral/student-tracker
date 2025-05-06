@@ -1,15 +1,78 @@
 [
-    {
-      "id": "1",
-      "name": "Assignment 1: Math Proofs",
-      "description": "Prove the following set of theorems using induction and contradiction.",
-      "deadline": "2025-05-10"
-    },
-    {
-      "id": "2",
-      "name": "Assignment 2: Literature Review",
-      "description": "Write a review of Orwell's 1984 focusing on surveillance and control.",
-      "deadline": "2025-05-15"
-    }
-  ]
-  
+  {
+    "id": "1",
+    "name": "Assignment 1: Mathematical Proof Techniques",
+    "description": "In this assignment, students are expected to demonstrate their understanding of mathematical proof techniques including induction, contradiction, and contrapositive. The problems range from basic number theory to combinatorial identities. Students should ensure that each step of their logic is clear and justified, and use proper notation wherever necessary.",
+    "deadline": "2025-05-10",
+    "submissions": []
+  },
+  {
+    "id": "2",
+    "name": "Assignment 2: Literature Review on 1984",
+    "description": "Write a critical review of George Orwell's novel '1984' with a focus on the themes of surveillance, control, and propaganda. Discuss how these themes are still relevant today, drawing parallels with current socio-political contexts. Your analysis should include at least two academic references and be structured with an introduction, body, and conclusion.",
+    "deadline": "2025-05-15",
+    "submissions": []
+  },
+  {
+    "id": "3",
+    "name": "Assignment 3: Database Design",
+    "description": "Design a relational database schema for a university course registration system. Include an ER diagram, a list of tables with appropriate keys and constraints, and sample queries demonstrating complex joins. Submit your ERD as a PDF and include a .sql file with schema creation commands.",
+    "deadline": "2025-05-20",
+    "submissions": []
+  },
+  {
+    "id": "4",
+    "name": "Assignment 4: Data Structures Implementation",
+    "description": "Implement core data structures such as linked lists, stacks, queues, binary trees, and hash tables from scratch in your preferred programming language. Comment your code well and write test cases to demonstrate correctness. Submit a GitHub link or ZIP file of your implementation.",
+    "deadline": "2025-05-25",
+    "submissions": [
+      {
+        "filename": "Process Excellence in Sustainability Intern.docx",
+        "filePath": "uploads/1746561681893.docx",
+        "uploadedAt": "2025-05-06T20:01:21.905Z"
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "name": "Assignment 5: Climate Change Policy Brief",
+    "description": "Prepare a policy brief addressing one of the major challenges in mitigating climate change. Choose a policy intervention (e.g., carbon pricing, renewable energy subsidies, deforestation control) and critically evaluate its effectiveness using data and case studies. Your brief should be concise (1500–2000 words) and suitable for submission to a policymaker.",
+    "deadline": "2025-05-30",
+    "submissions": []
+  },
+  {
+    "id": "6",
+    "name": "Assignment 6: Machine Learning Model Evaluation",
+    "description": "Using a provided dataset, train and evaluate multiple machine learning models for a classification problem. Compare performance using metrics like accuracy, F1 score, ROC-AUC, and confusion matrix. Visualize results using matplotlib or seaborn. Submit a Jupyter notebook (.ipynb) along with a summary report.",
+    "deadline": "2025-06-05",
+    "submissions": []
+  },
+  {
+    "id": "7",
+    "name": "Assignment 7: Political Campaign Strategy",
+    "description": "Develop a comprehensive campaign strategy for a fictional candidate contesting a local election. Include demographic targeting, media strategy, budget allocation, messaging, and a mock speech. You are encouraged to use real data and past campaign examples to justify your strategy choices.",
+    "deadline": "2025-06-10",
+    "submissions": []
+  },
+  {
+    "id": "8",
+    "name": "Assignment 8: Operating Systems Process Management",
+    "description": "Study the concepts of process scheduling, inter-process communication, and deadlocks in operating systems. Write code simulations (preferably in C or Python) demonstrating round-robin scheduling and producer-consumer problems. Include a report explaining your implementation choices.",
+    "deadline": "2025-06-15",
+    "submissions": []
+  },
+  {
+    "id": "9",
+    "name": "Assignment 9: Philosophy of Technology Essay",
+    "description": "Write an essay exploring how modern technology reshapes our understanding of human nature, work, and ethics. You may draw from thinkers such as Heidegger, Foucault, or contemporary philosophers. Be critical and provide real-world examples where possible.",
+    "deadline": "2025-06-20",
+    "submissions": []
+  },
+  {
+    "id": "10",
+    "name": "Assignment 10: UX Design Project",
+    "description": "Design a prototype for a mobile app aimed at helping college students manage their academic workload. Use Figma or Adobe XD for wireframes and UI elements. Conduct a short user survey or usability test and include feedback results in your submission.",
+    "deadline": "2025-06-25",
+    "submissions": []
+  }
+]

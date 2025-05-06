@@ -36,52 +36,167 @@ This project is a basic web application designed to help students track and mana
 │ └── index.ejs # Homepage showing assignment list
 ```
 
-## Getting Started
+# Logic Note: Assignment Task List and Submission System
 
-### Prerequisites
+This Express.js application provides a simple assignment management interface. It allows users to:
 
-Ensure that you have Node.js and npm installed on your system.
+1. **View a list of assignments** (on the homepage),
+2. **View details of each assignment** (if implemented),
+3. **Submit files** to specific assignments using a file upload form.
 
-### Installation
+Below is a detailed breakdown of how each part of the logic works.
 
-1. Clone the repository:
+---
 
-```bash
-git clone https://github.com/netviral/student-tracker
-cd student-tracker
+
+---
+
+## Core Modules Used
+
+- `express`: Web framework for routing and handling HTTP requests.
+- `path`: Provides utilities for working with file and directory paths.
+- `fs`: Enables reading/writing JSON data from/to files.
+- `multer`: Handles file uploads.
+
+---
+
+## Homepage: Display Assignment List
+
+**Route: `/`**
+
+This route reads the list of assignments from `data/assignments.json` and renders the homepage using the `index.ejs` template.
+
+### Logic:
+1. Uses `fs.readFile()` to load `assignments.json`.
+2. Parses the JSON string into a JavaScript array of assignments.
+3. Passes the array (`assignments`) and a stringified version (`assignmentString`) to the EJS view for rendering.
+
+```js
+app.get('/', (req, res) => {
+  const dataPath = path.join(__dirname, 'data', 'assignments.json');
+  fs.readFile(dataPath, 'utf8', (err, jsonData) => {
+    if (err) return res.status(500).send('Error loading assignments');
+    const assignments = JSON.parse(jsonData);
+    res.render('index', { assignments, assignmentString: JSON.stringify(assignments) });
+  });
+});
 ```
 
-## Getting Started
+---
 
-### Installation
+## File Uploads (Submissions)
 
-1. Install dependencies:
+**Route: `POST /api/upload-submission/:assignment_id`**
 
-    ```bash
-    npm install
-    ```
+Handles file uploads from users and associates the uploaded file with the appropriate assignment based on its ID.
 
-2. Run the server:
+### File Upload Setup:
+- `multer.diskStorage()` is used to:
+  - Store files in the `/uploads` directory.
+  - Rename the file to a timestamp plus its original extension (to avoid conflicts).
 
-    ```bash
-    node app.js
-    ```
+```js
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, 'uploads'));
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname));
+  }
+});
+const upload = multer({ storage: storage });
+```
 
-3. Open the application in your browser:
+### Upload Logic:
+1. **Extract Assignment ID** from the URL (e.g., `/api/upload-submission/abc123`).
+2. **Check for uploaded file**. If missing, return error.
+3. **Read `assignments.json`**.
+4. **Find matching assignment** using `.find()` on assignment ID.
+5. **If found**, create or update the `submissions` array.
+6. **Add new submission info**:
+   - Original filename
+   - Filepath in the `uploads/` directory
+   - Upload timestamp
+7. **Write updated data** back to `assignments.json`.
 
-    ```
-    http://localhost:3001
-    ```
+```js
+app.post('/api/upload-submission/:assignment_id', upload.single('file'), (req, res) => {
+  const assignmentId = req.params.assignment_id;
+  const file = req.file;
+
+  if (!file) return res.status(400).json({ success: false, message: 'No file uploaded' });
+
+  const dataPath = path.join(__dirname, 'data', 'assignments.json');
+  fs.readFile(dataPath, 'utf8', (err, jsonData) => {
+    if (err) return res.status(500).json({ success: false, message: 'Error loading assignments' });
+
+    const assignments = JSON.parse(jsonData);
+    const assignment = assignments.find(a => a.id === assignmentId);
+    if (!assignment) return res.status(404).json({ success: false, message: 'Assignment not found' });
+
+    if (!assignment.submissions) {
+      assignment.submissions = [];
+    }
+
+    assignment.submissions.push({
+      filename: file.originalname,
+      filePath: path.join('uploads', file.filename),
+      uploadedAt: new Date()
+    });
+
+    fs.writeFile(dataPath, JSON.stringify(assignments, null, 2), (err) => {
+      if (err) return res.status(500).json({ success: false, message: 'Error saving assignment data' });
+      res.status(200).json({ success: true, message: 'File uploaded successfully' });
+    });
+  });
+});
+```
 
 ---
 
-## API Endpoints
+## Additional Setup
 
-### `GET /api/assignments`
-
-Returns the list of assignments in JSON format. This data is loaded from `data/assignments.json`.
+- **Templating Engine**: EJS is set as the view engine to render `.ejs` files.
+- **Static Files**: All CSS/JS files in `/public` are served to the frontend.
+- **URL Encoding Middleware**: `express.urlencoded()` is enabled for processing form inputs if needed later.
 
 ---
+
+## Error Handling
+
+**Catch-all route** for anything undefined returns a basic `404` message.
+
+```js
+app.use((req, res) => {
+  res.send('404');
+});
+```
+
+---
+
+## Server Startup
+
+The server listens on port **3001** and logs a message when it starts.
+
+```js
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+});
+```
+
+---
+
+## Summary
+
+- Data is persisted in a JSON file (`assignments.json`), simulating a lightweight database.
+- Each assignment can store multiple file submissions.
+- Files are uploaded using `multer`, renamed uniquely, and stored under `/uploads`.
+- Submissions are linked to assignments based on their `id`, which must be passed in the URL.
+- The system is modular and ready for front-end integration using EJS templates and static files.
+
+---
+
+Let me know if you'd like this exported as a `.md` file or need diagrams!
 
 ## Future Enhancements
 
