@@ -1,0 +1,15 @@
+[
+    {
+      "id": "1",
+      "name": "Assignment 1: Math Proofs",
+      "description": "Prove the following set of theorems using induction and contradiction.",
+      "deadline": "2025-05-10"
+    },
+    {
+      "id": "2",
+      "name": "Assignment 2: Literature Review",
+      "description": "Write a review of Orwell's 1984 focusing on surveillance and control.",
+      "deadline": "2025-05-15"
+    }
+  ]
+  
