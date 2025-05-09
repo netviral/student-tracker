@@ -197,8 +197,6 @@ app.listen(PORT, () => {
 
 ---
 
-Let me know if you'd like this exported as a `.md` file or need diagrams!
-
 ## Future Enhancements
 
 - Enable editing or resubmitting assignments before deadlines  
