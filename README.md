@@ -3,7 +3,7 @@
 ![Homepage Screenshot](docs/home-page.png)
 ![Homepage Screenshot](docs/2.png)
 
-This project is a basic web application designed to help students track and manage assignment submissions. The interface presents a modern, dark-themed layout where users can view a list of assignments and interact with them in a clean and organized format.
+This project is a basic web application designed to help students track and manage assignment submissions. The interface presents a modern, light-themed layout where users can view a list of assignments and interact with them in a clean and organized format.
 
 ## Features
 
@@ -201,7 +201,6 @@ Let me know if you'd like this exported as a `.md` file or need diagrams!
 
 ## Future Enhancements
 
-- Add functionality to upload submissions against each assignment  
 - Enable editing or resubmitting assignments before deadlines  
 - Include a comment box and submission timestamp tracking  
 - Build student login and authentication pages  
